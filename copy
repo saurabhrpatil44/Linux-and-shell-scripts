@@ -1,0 +1,19 @@
+#!/bin/bash
+
+SRCfile=$1
+TGTdir=$2
+echo -e "\nNOTE: If Target directory is not exist then as like cp command it will create duplicate file of entered Source file.\n\n"
+
+echo -e "\n\nThe Source file name : ${SRCfile} "
+echo "The Target directory name : ${TGTdir} "
+
+cp -v ${SRCfile} ${TGTdir} 2> /home/ec2-user/linux/output.txt 1>&2
+if [ $? -eq 0 ]
+then
+    echo -e "\nSuccessful!!!! \nThe source file ${SRCfile} is copied into target directory ${TGTdir}."
+    cat /home/ec2-user/linux/output.txt
+else
+    echo " "
+    echo "Error!!!!"
+    cat /home/ec2-user/linux/output.txt
+fi
